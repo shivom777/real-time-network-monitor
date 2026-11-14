@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NetPulse — Real-Time Network Monitor</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar"><div class="brand"><div class="brand-icon">⌁</div><div><b>NetPulse</b><small>NETWORK MONITOR</small></div></div>
+    <div class="nav-label">WORKSPACE</div><a class="nav active" href="#overview">▦ <span>Overview</span></a><a class="nav" href="#targets">◎ <span>Monitored targets</span></a><a class="nav" href="#events">◷ <span>Event log</span></a>
+    <div class="side-bottom"><div class="pulse"></div><div><b>Monitoring active</b><small>Checks every 15 seconds</small></div></div>
+  </aside>
+  <main class="main" id="overview">
+    <header><div><div class="eyebrow">NETWORK OPERATIONS / OVERVIEW</div><h1>Network overview</h1><p class="sub">Monitor service availability and performance in real time.</p></div><div class="header-right"><span class="live"><i></i> LIVE MONITORING</span><button class="primary" id="openModal">＋ Add target</button></div></header>
+    <section class="stats"><article class="stat"><div class="stat-top">TOTAL TARGETS <span>◎</span></div><strong id="total">0</strong><small>Services being monitored</small></article><article class="stat"><div class="stat-top">ONLINE <span class="green">↗</span></div><strong id="up">0</strong><small><em class="green">●</em> Operational services</small></article><article class="stat"><div class="stat-top">OFFLINE <span class="red">↘</span></div><strong id="down">0</strong><small><em class="red">●</em> Require attention</small></article><article class="stat"><div class="stat-top">AVG. AVAILABILITY <span>◷</span></div><strong id="availability">0.0<small>%</small></strong><small>Across monitored targets</small></article></section>
+    <section class="content-grid"><article class="panel targets-panel" id="targets"><div class="panel-head"><div><h2>Monitored targets</h2><p>Live health and response time for each service</p></div><button class="ghost" id="refresh">↻ Refresh</button></div><div class="table-wrap"><table><thead><tr><th>TARGET</th><th>TYPE</th><th>STATUS</th><th>RESPONSE</th><th>AVAILABILITY</th><th></th></tr></thead><tbody id="targetRows"><tr><td colspan="6" class="empty">No targets yet. Add a website or server to begin.</td></tr></tbody></table></div></article>
+    <article class="panel summary"><div class="panel-head"><div><h2>Performance</h2><p>Current monitoring summary</p></div></div><div class="metric"><span>Average response time</span><b id="avgResponse">—</b></div><div class="metric"><span>Checks interval</span><b>15 sec</b></div><div class="metric"><span>Concurrent check limit</span><b>5</b></div><div class="uptime"><div class="uptime-ring" id="ring"><div><b id="ringValue">0%</b><small>availability</small></div></div><p>Average availability across all targets</p></div></article></section>
+    <section class="panel events-panel" id="events"><div class="panel-head"><div><h2>Recent events</h2><p>Latest status changes and failures</p></div><span class="count" id="eventCount">0 EVENTS</span></div><div id="eventRows" class="event-list"><div class="empty">No events recorded yet. Events appear when a target changes status.</div></div></section>
+    <footer>NETPULSE <span>•</span> REAL-TIME NETWORK MONITOR <span class="foot-right">OOP MINI PROJECT</span></footer>
+  </main>
+</div>
+<div class="modal-backdrop" id="modal"><div class="modal"><button class="close" id="closeModal">×</button><div class="eyebrow">NEW MONITOR</div><h2>Add a target</h2><p class="sub">Choose what you want NetPulse to monitor.</p>
+  <form id="targetForm"><label>Target name<input name="name" placeholder="e.g. Company Website" required maxlength="50"></label><label>Check type<select name="type" id="type"><option value="HTTP">HTTP endpoint</option><option value="TCP">TCP port</option></select></label><label id="addressLabel">Endpoint URL<input name="address" id="address" placeholder="https://example.com" required></label><label id="portLabel" class="hidden">Port number<input name="port" type="number" min="1" max="65535" placeholder="443"></label><div class="form-error" id="formError"></div><button class="primary full" type="submit">Start monitoring →</button></form>
+</div></div>
+<script src="app.js"></script>
+</body></html>
